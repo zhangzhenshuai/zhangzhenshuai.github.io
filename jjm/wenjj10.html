@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wen加解密1.0</title>
+    <script>
+        function modifyString() {
+            // 获取用户输入的字符串
+            const inputString = document.getElementById('inputString').value;
+
+            // 生成一个随机数 a，范围在 1 到 10 之间
+            const a = Math.ceil(Math.random() * 10);
+
+            // 遍历输入字符串的每个字符
+            let modifiedString = '';
+            for (let i = 0; i < inputString.length; i++) {
+                // 获取字符的 ASCII 值并加上 a
+                const charCode = inputString.charCodeAt(i) + a+3;
+                // 将修改后的字符添加到结果字符串
+                modifiedString += String.fromCharCode(charCode);
+            }
+
+            // 用窗口输出 n 和 a
+            alert(`key:${a}\n密文:${modifiedString}`);
+            document.getElementById("ss").innerHTML = `密文:${modifiedString}\n`;
+            document.getElementById("kk").innerHTML = `key:${a}\n`;
+        
+        }
+        function ifyString() {
+            // 获取用户输入的字符串
+            const inputString = document.getElementById('inputmString').value;
+
+            // 生成一个随机数 a，范围在 1 到 10 之间
+            const a = document.getElementById('inputkey').value;
+
+            // 遍历输入字符串的每个字符
+            let modifiedString = '';
+            for (let i = 0; i < inputString.length; i++) {
+                // 获取字符的 ASCII 值并加上 a
+                const charCode = inputString.charCodeAt(i) - a-3;
+                // 将修改后的字符添加到结果字符串
+                modifiedString += String.fromCharCode(charCode);
+            }
+
+            // 用窗口输出 n 和 a
+            alert(`原文:${modifiedString}`);
+            document.getElementById("ff").innerHTML = `原文:${modifiedString}\n`;
+        }
+    </script>
+</head>
+<body>
+    
+    
+    <h1>ASCII加密1.0</h1>
+    <label for="inputString">请输入原文:</label>
+    <input type="text" id="inputString">
+    <br>
+    <button onclick="modifyString()">提交</button>
+    <h5 id="ss"></h5>
+    <h5 id="kk"></h5>
+    <br>
+    <h1>ASCII解密1.0</h1>
+    <label for="inputString">请输入密文:</label>
+    <input type="text" id="inputmString">
+    <br>
+    <label for="inputString">请输入key:</label>
+    <input type="text" id="inputkey">
+    <br>
+    <button onclick="ifyString()">提交</button>
+    <h5 id="ff"></h5>
+    <br><br>
+    <h5>
+    必读：
+    <br>
+        加密时输入需要加密的文字（语数英都可以），提交后会弹出一个弹窗，
+        <br>
+        显示密文与key（密钥），取消后会在界面上显示密文与key（密钥），方便复制。
+        <br>
+        解密时输入密文与key（密钥），提交后弹出弹窗显示原文，取消后在
+        <br>
+        界面上显示原文，方便复制。
+        <br>
+        分享时，请将key（密钥）与密文一同发出，并告诉他本网站与解密方式，
+        <br>
+        以防对方无法解密。
+        <br>
+        </h5>
+        温馨提示：加密后，请先解密验证下加密是否正确，然后再分享，
+        <br>
+        因为验证而导致的损失，本站概不负责。
+        <br>
+        （若出现加密错误的情况，请由主页联系方式联系站主）
+        <br>
+</body>
+</html>
